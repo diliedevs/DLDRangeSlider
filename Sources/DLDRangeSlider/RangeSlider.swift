@@ -60,7 +60,7 @@ private extension RangeSlider {
 struct RangeSlider_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            RangeSlider(range: .constant(0.15...0.85), color: .indigo, height: 10)
+            RangeSlider(range: .constant(0.15...0.85), color: .accentColor, height: 10)
         }
         .padding()
     }

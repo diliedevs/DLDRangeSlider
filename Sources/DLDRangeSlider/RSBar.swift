@@ -27,7 +27,7 @@ struct RSBar<V: BinaryFloatingPoint>: View {
                 }
                 .background(
                     Capsule()
-                        .fill(Color.controlBackgroundColor)
+                        .fill(Color.barBackgroundColor)
                 )
         }
     }
@@ -37,9 +37,19 @@ private extension RSBar {
     
 }
 
+private extension Color {
+    static var barBackgroundColor: Color {
+        #if os(iOS)
+        return Color(uiColor: .systemGray5)
+        #elseif os(macOS)
+        return Color(nsColor: .placeholderTextColor)
+        #endif
+    }
+}
+
 struct SliderTrack_Previews: PreviewProvider {
     static var previews: some View {
-        RSBar(tint: .indigo, range: 0.15...0.85, bounds: 0.0...1.0)
+        RSBar(tint: .accentColor, range: 0.15...0.85, bounds: 0.0...1.0)
             .padding()
     }
 }
